@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "852887007361",
+    "project_id": "freganaapp",
+    "storage_bucket": "freganaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852887007361:android:ee2619e9f6e93f2d9edd80",
+        "android_client_info": {
+          "package_name": "com.example.farganaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852887007361-gnerqm354dj0k60dd3hd29lqa4s8jj2b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.farganaapp",
+            "certificate_hash": "36f655c005225fdc558501be577fc11ed77c8ea8"
+          }
+        },
+        {
+          "client_id": "852887007361-3qd1s9cboecd3dfrgpdr72prhumikoss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCQwtSdohlQc91zijTj-xbckdpqkFM5J4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852887007361-3qd1s9cboecd3dfrgpdr72prhumikoss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signUpFragment">
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.farganaapp.ui.registration.sign_up.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_clientHomeFragment"
+            app:destination="@id/clientHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.farganaapp.ui.registration.sign_in.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_clientHomeFragment"
+            app:destination="@id/clientHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="com.example.farganaapp.ui.home.admin.AdminHomeFragment"
+        android:label="fragment_admin_home"
+        tools:layout="@layout/fragment_admin_home" >
+        <action
+            android:id="@+id/action_adminHomeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminElectricityFragment"
+            app:destination="@id/adminElectricityFragment"
+            app:popUpTo="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminGasFragment"
+            app:destination="@id/adminGasFragment"
+            app:popUpTo="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminTrashFragment"
+            app:destination="@id/adminTrashFragment"
+            app:popUpTo="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminReportFragment"
+            app:destination="@id/adminReportFragment"
+            app:popUpTo="@id/adminHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientHomeFragment"
+        android:name="com.example.farganaapp.ui.home.client.ClientHomeFragment"
+        android:label="fragment_client_home"
+        tools:layout="@layout/fragment_client_home" >
+        <action
+            android:id="@+id/action_clientHomeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_clientHomeFragment_to_adminTrashFragment"
+            app:destination="@id/adminTrashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminElectricityFragment"
+        android:name="com.example.farganaapp.ui.home.admin.ui.AdminElectricityFragment"
+        android:label="fragment_admin_electricity"
+        tools:layout="@layout/fragment_admin_electricity" />
+    <fragment
+        android:id="@+id/adminGasFragment"
+        android:name="com.example.farganaapp.ui.home.admin.ui.AdminGasFragment"
+        android:label="fragment_admin_gas"
+        tools:layout="@layout/fragment_admin_gas" />
+    <fragment
+        android:id="@+id/adminTrashFragment"
+        android:name="com.example.farganaapp.ui.home.admin.ui.AdminTrashFragment"
+        android:label="fragment_admin_trash"
+        tools:layout="@layout/fragment_admin_trash" />
+    <fragment
+        android:id="@+id/adminReportFragment"
+        android:name="com.example.farganaapp.ui.home.admin.ui.AdminReportFragment"
+        android:label="fragment_admin_report"
+        tools:layout="@layout/fragment_admin_report" />
+</navigation>
