@@ -69,8 +69,6 @@ class SignUpFragment : Fragment() {
 
         binding.button.setOnClickListener{
             val name = binding.evName.text.toString()
-            val country = binding.evCountry.text.toString()
-            val region = binding.evRegion.text.toString()
             val street = binding.evStreet.text.toString()
             val email = binding.editTextTextEmailAddress.text.toString()
             val pass = binding.editTextTextPassword.text.toString()
@@ -83,7 +81,7 @@ class SignUpFragment : Fragment() {
                             if (!it) binding.progressBar.visibility = View.GONE
                         }
                     }
-                    registrationViewModel.registerUser(name,country,region,street)
+                    registrationViewModel.registerUser(name,street)
 
                     // Admin login successful, navigate to admin page
                     binding.tvError.text = ""

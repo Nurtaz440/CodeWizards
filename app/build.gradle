@@ -7,31 +7,31 @@ plugins {
 }
 
 android {
-    namespace 'com.example.farganaapp'
-    compileSdk 33
+    namespace = 'com.example.farganaapp'
+    compileSdk = 34
 
     defaultConfig {
-        applicationId "com.example.farganaapp"
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.example.farganaapp"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = '17'
@@ -64,8 +64,8 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha02"
 
     //Room
-    implementation "androidx.room:room-ktx:2.5.2"
-    kapt "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-ktx:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
 
     //splashScreen
     implementation "androidx.core:core-splashscreen:1.0.0"

@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:gravity="center"
-        android:text="Roʻyxatdan oʻtish"
+        android:text="Sign Up"
         android:textAllCaps="true"
         android:fontFamily="@font/righteous"
         android:textColor="@color/main_color"
@@ -67,76 +67,6 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_country"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        app:cardCornerRadius="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_name"
-        app:strokeColor="@color/main_color"
-        app:strokeWidth="2dp">
-
-        <EditText
-            android:id="@+id/ev_country"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:freezesText="true"
-            android:hint="Enter Your Country"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:lines="1"
-            android:paddingStart="24dp"
-            android:saveEnabled="true"
-            android:text=""
-            android:textColorHint="@color/edit_hint_color"
-            android:textCursorDrawable="@drawable/edit_text_cursore"
-            android:textSize="16sp" />
-
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_redion"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        app:cardCornerRadius="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_country"
-        app:strokeColor="@color/main_color"
-        app:strokeWidth="2dp">
-
-        <EditText
-            android:id="@+id/ev_region"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:freezesText="true"
-            android:hint="Enter Your Region"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:lines="1"
-            android:paddingStart="24dp"
-            android:saveEnabled="true"
-            android:text=""
-            android:textColorHint="@color/edit_hint_color"
-            android:textCursorDrawable="@drawable/edit_text_cursore"
-            android:textSize="16sp" />
-
-    </com.google.android.material.card.MaterialCardView>
 
    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_street"
@@ -148,7 +78,7 @@
         app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_redion"
+        app:layout_constraintTop_toBottomOf="@id/cv_name"
         app:strokeColor="@color/main_color"
         app:strokeWidth="2dp">
 
@@ -259,7 +189,7 @@
         android:text="Sign Up"
         android:textColor="@color/white"
         app:cornerRadius="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="@+id/cv_password"
         app:layout_constraintStart_toStartOf="@+id/cv_password"
         app:layout_constraintTop_toBottomOf="@+id/tv_error"
@@ -272,6 +202,7 @@
         android:text="Already Registered? Sign In"
         android:textColor="@color/black"
         android:textStyle="normal"
+        android:textSize="20sp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintStart_toStartOf="@+id/button"

@@ -15,8 +15,8 @@ class RegistrationViewModel(private val userRepository: UserRepository) : ViewMo
 
     //val allUsers: LiveData<List<UserDetails>> = userRepository.allUsers
 
-    fun registerUser(name: String,country:String,region:String,street:String) {
-        val user = UserDetails(name = name, country = country, region = region,street = street)
+    fun registerUser(name: String,street:String) {
+        val user = UserDetails(name = name,street = street)
         viewModelScope.launch {
             try {
                 userRepository.insertUser(user)

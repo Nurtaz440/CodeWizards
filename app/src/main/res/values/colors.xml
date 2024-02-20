@@ -6,4 +6,6 @@
     <color name="red">#C60202</color>
     <color name="main_color">#093B54</color>
     <color name="edit_hint_color">#A6A4A4</color>
+    <color name="unselected_color">#cccccc</color>
+    <color name="blue">#008ffe</color>
 </resources>

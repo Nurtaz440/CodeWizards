@@ -18,6 +18,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.farganaapp.databinding.FragmentAdminElectricityBinding
 import com.example.farganaapp.reciver.AlarmReceiver
 import com.example.farganaapp.reciver.channelId
@@ -48,7 +49,10 @@ class AdminElectricityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         alarmManager = requireActivity().getSystemService(ALARM_SERVICE) as AlarmManager
         createNotificationChannel()
-        binding.btnScheduleAlarm.setOnClickListener {
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+      //  binding.btnScheduleAlarm.setOnClickListener {
 //            var time : Long
 //            if ((binding.btnScheduleAlarm).isChecked){
 //                Toast.makeText(context,"Alarm On",Toast.LENGTH_SHORT).show()
@@ -73,29 +77,29 @@ class AdminElectricityFragment : Fragment() {
 //               alarmManager!!.cancel(pendingIntent)
 //                Toast.makeText(context,"Alarm OFF",Toast.LENGTH_SHORT).show()
 //            }
-            scheduleNotification()
-        }
+      //      scheduleNotification()
+  //      }
 
     }
 
-    private fun scheduleNotification() {
-        val intent = Intent(requireContext().applicationContext,AlarmReceiver::class.java)
-        val title = binding.etTitle.text.toString()
-        val desc = binding.etDesc.text.toString()
-        intent.putExtra(titleExtra,title)
-        intent.putExtra(messageExtra,desc)
-
-        val  pendingIntent = PendingIntent.getBroadcast(
-            requireContext().applicationContext, notificationId,intent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val time = getTime()
-
-        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
-        time,pendingIntent)
-        shouAlert(time,title,desc)
-    }
+//    private fun scheduleNotification() {
+//        val intent = Intent(requireContext().applicationContext,AlarmReceiver::class.java)
+//        val title = binding.etTitle.text.toString()
+//        val desc = binding.etDesc.text.toString()
+//        intent.putExtra(titleExtra,title)
+//        intent.putExtra(messageExtra,desc)
+//
+//        val  pendingIntent = PendingIntent.getBroadcast(
+//            requireContext().applicationContext, notificationId,intent,
+//            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+//        )
+//        val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        val time = getTime()
+//
+//        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+//        time,pendingIntent)
+//        shouAlert(time,title,desc)
+//    }
 
     private fun shouAlert(time: Long, title: String, message: String) {
         val date = Date(time)
@@ -112,17 +116,17 @@ class AdminElectricityFragment : Fragment() {
     }
 
 
-    private fun getTime(): Long {
-        val minut = binding.fragmentCreatealarmTimePicker.minute
-        val hour = binding.fragmentCreatealarmTimePicker.hour
-        val day = binding.datePicker.dayOfMonth
-        val month = binding.datePicker.month
-        val year = binding.datePicker.year
-
-        val calendar = Calendar.getInstance()
-        calendar.set(year,month,day,hour,minut)
-        return calendar.timeInMillis
-    }
+//    private fun getTime(): Long {
+//        val minut = binding.fragmentCreatealarmTimePicker.minute
+//        val hour = binding.fragmentCreatealarmTimePicker.hour
+//        val day = binding.datePicker.dayOfMonth
+//        val month = binding.datePicker.month
+//        val year = binding.datePicker.year
+//
+//        val calendar = Calendar.getInstance()
+//        calendar.set(year,month,day,hour,minut)
+//        return calendar.timeInMillis
+//    }
 
     private fun createNotificationChannel() {
         val name = "Notif channel"
