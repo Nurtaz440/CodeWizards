@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Areas"
+        android:icon="@drawable/anim_area_click"
+        app:showAsAction="ifRoom"
+        android:id="@+id/areasFragment"/>
+
+    <item
+        android:title="AskMyStreet"
+        android:icon="@drawable/anim_chat_click"
+        app:showAsAction="ifRoom"
+        android:id="@+id/chatFragment"/>
+</menu>

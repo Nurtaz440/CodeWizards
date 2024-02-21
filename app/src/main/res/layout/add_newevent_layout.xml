@@ -50,8 +50,8 @@
             android:textColor="@color/main_color"
             android:textSize="18sp"
             android:id="@+id/alarmMe"
-            android:layout_margin="16dp"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:layout_below="@+id/setevent_time"/>
     </RelativeLayout>
 

@@ -43,6 +43,7 @@
                 android:layout_height="48dp"
                 android:src="@drawable/logo"
                 android:padding="2dp"
+                android:id="@+id/iv_sign_out"
                 android:background="@color/main_color"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>

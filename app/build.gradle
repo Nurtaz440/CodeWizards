@@ -70,6 +70,17 @@ dependencies {
     //splashScreen
     implementation "androidx.core:core-splashscreen:1.0.0"
 
+    //google map
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+    // add the dependency for the Google AI client SDK for Android
+    implementation("com.google.ai.client.generativeai:generativeai:0.1.2")
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 //    //butterKnife
 //    implementation 'com.jakewharton:butterknife:10.2.3'
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'

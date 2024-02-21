@@ -8,4 +8,6 @@
     <color name="edit_hint_color">#A6A4A4</color>
     <color name="unselected_color">#cccccc</color>
     <color name="blue">#008ffe</color>
+    <color name="colorPrimary">#BABABA</color>
+    <color name="statistics_color">#8995FF</color>
 </resources>

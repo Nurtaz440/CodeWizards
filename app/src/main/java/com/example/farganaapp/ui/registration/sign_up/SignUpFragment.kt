@@ -19,6 +19,7 @@ import com.example.farganaapp.database.AppDatabase
 import com.example.farganaapp.databinding.FragmentSignUpBinding
 import com.example.farganaapp.repository.UserRepository
 import com.example.farganaapp.ui.registration.viewModel.AuthViewModel
+import com.example.farganaapp.util.SharedPreferencesManager
 import kotlinx.coroutines.launch
 
 class SignUpFragment : Fragment() {
@@ -81,6 +82,8 @@ class SignUpFragment : Fragment() {
                             if (!it) binding.progressBar.visibility = View.GONE
                         }
                     }
+                    SharedPreferencesManager.setEmail(requireContext(),email,pass)
+                    SharedPreferencesManager.setRegistered(requireContext(), true)
                     registrationViewModel.registerUser(name,street)
 
                     // Admin login successful, navigate to admin page

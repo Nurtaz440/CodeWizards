@@ -1,8 +1,11 @@
 package com.example.farganaapp.ui.custom
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.database.Cursor
 import android.media.Image
 import android.util.AttributeSet
@@ -104,6 +107,9 @@ class CustomCalendarView(context: Context, attrs: AttributeSet) : LinearLayout(c
                                 val hformat = SimpleDateFormat("K:mm a", Locale.ENGLISH)
                                 val eventTime = hformat.format(c.time)
                                 EventTime.setText(eventTime)
+                                alarmHour = c.get(Calendar.HOUR_OF_DAY)
+                                alarmMinute = c.get(Calendar.MINUTE)
+
                             }
                         },hours,minuts,false)
                     timePickerDialog.show()
@@ -113,9 +119,21 @@ class CustomCalendarView(context: Context, attrs: AttributeSet) : LinearLayout(c
                 val year = yearFormat.format(dates[position])
 
                 addEvent.setOnClickListener {
-                    saveEvent(eventName.text.toString(),EventTime.text.toString(), date,month,year)
-                    setUpCalendar()
-                    alertDialog.dismiss()
+                    if (checkBox.isChecked){
+                        saveEvent(eventName.text.toString(),EventTime.text.toString(), date,month,year,"on")
+                        setUpCalendar()
+                        val calendar = Calendar.getInstance()
+                        calendar.set(alarmYear!!,alarmMonth!!,alarmDay!!, alarmHour!!,alarmMinute!!)
+
+                        setAlarm(calendar,eventName.text.toString(),EventTime.text.toString(),
+                            getRequestCode(date,eventName.text.toString(),EventTime.text.toString()))
+                        alertDialog.dismiss()
+                    }else{
+                        saveEvent(eventName.text.toString(),EventTime.text.toString(), date,month,year,"off")
+                        setUpCalendar()
+                        alertDialog.dismiss()
+                    }
+
                 }
                 builder.setView(addView)
                 alertDialog = builder.create()
@@ -161,6 +179,19 @@ class CustomCalendarView(context: Context, attrs: AttributeSet) : LinearLayout(c
         })
     }
 
+    private fun getRequestCode(date: String,event: String,time: String):Int{
+        var code = 0
+        dBopenHelper = DBopenHelper(context)
+        val dataBase = dBopenHelper.readableDatabase
+        val cursor = dBopenHelper.readIdEvents(date,event,time,dataBase)
+        while (cursor.moveToNext()){
+            code  = cursor.getInt(with(cursor) { getColumnIndex(DBStructure.ID) })
+
+        }
+        cursor.close()
+        dBopenHelper.close()
+        return code
+    }
     private fun collectEventByDate(date : String) : ArrayList<Events> {
         val arrayList = ArrayList<Events>()
         dBopenHelper = DBopenHelper(context)
@@ -180,10 +211,10 @@ class CustomCalendarView(context: Context, attrs: AttributeSet) : LinearLayout(c
         return arrayList
     }
 
-    fun saveEvent(event:String,time:String,date:String,month:String,year:String){
+    fun saveEvent(event:String,time:String,date:String,month:String,year:String,notify:String){
         dBopenHelper = DBopenHelper(context)
         val dataBase = dBopenHelper.writableDatabase
-        dBopenHelper.saveEvent(event,time,date,month,year,dataBase)
+        dBopenHelper.saveEvent(event,time,date,month,year,notify,dataBase)
         dBopenHelper.close()
         Toast.makeText(context,"Event Saved", Toast.LENGTH_SHORT).show()
     }
@@ -231,5 +262,14 @@ class CustomCalendarView(context: Context, attrs: AttributeSet) : LinearLayout(c
         }
         cursor.close()
         dBopenHelper.close()
+    }
+    private fun setAlarm(calendar: Calendar,event: String,time: String,requestCode:Int){
+        val intent = Intent(context.applicationContext,AlarmReceiver::class.java)
+        intent.putExtra("event",event)
+        intent.putExtra("time",time)
+        intent.putExtra("id",requestCode)
+        val pendingIntent = PendingIntent.getBroadcast(context,requestCode,intent,PendingIntent.FLAG_IMMUTABLE)
+        val alarmManager = context.applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,pendingIntent)
     }
 }

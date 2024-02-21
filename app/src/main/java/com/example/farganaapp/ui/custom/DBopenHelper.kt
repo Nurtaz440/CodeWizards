@@ -27,13 +27,14 @@ class DBopenHelper(context:Context) : SQLiteOpenHelper(context,DBStructure.DB_NA
         onCreate(db)
     }
 
-    fun saveEvent(event : String, time:String, date:String, month : String, year : String, database : SQLiteDatabase){
+    fun saveEvent(event : String, time:String, date:String, month : String, year : String,notify : String, database : SQLiteDatabase){
         val contentValues = ContentValues()
         contentValues.put(DBStructure.EVENT,event)
         contentValues.put(DBStructure.TIME,time)
         contentValues.put(DBStructure.DATE,date)
         contentValues.put(DBStructure.MONTH,month)
         contentValues.put(DBStructure.YEAR,year)
+        contentValues.put(DBStructure.Notify,notify)
         database.insert(DBStructure.EVENT_TABLE_NAME,null,contentValues)
 
     }
@@ -46,7 +47,7 @@ class DBopenHelper(context:Context) : SQLiteOpenHelper(context,DBStructure.DB_NA
     }
     fun readIdEvents(date : String,event : String, time : String, database: SQLiteDatabase) : Cursor{
         val Projections = arrayOf(DBStructure.ID, DBStructure.Notify)
-        val selection = DBStructure.DATE +  "=? and "  + DBStructure.EVENT  + DBStructure.TIME + "=?"
+        val selection = DBStructure.DATE +  "=? and "  + DBStructure.EVENT  +  "=? and " + DBStructure.TIME + "=?"
         val selectionArgs= arrayOf(date,event,time)
      return database.query(DBStructure.EVENT_TABLE_NAME,Projections,selection,selectionArgs,null,null,null)
     }

@@ -92,4 +92,14 @@
         android:name="com.example.farganaapp.ui.home.admin.ui.AdminReportFragment"
         android:label="fragment_admin_report"
         tools:layout="@layout/fragment_admin_report" />
+    <fragment
+        android:id="@+id/areasFragment"
+        android:name="com.example.farganaapp.ui.home.client.ui.AreasFragment"
+        android:label="fragment_areas"
+        tools:layout="@layout/fragment_areas" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.farganaapp.ui.home.client.ui.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>
