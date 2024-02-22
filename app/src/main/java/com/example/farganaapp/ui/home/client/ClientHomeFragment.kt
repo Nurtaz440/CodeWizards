@@ -57,6 +57,7 @@ class ClientHomeFragment : Fragment() {
                R.id.areasFragment->{
                    binding.textView2.visibility = View.VISIBLE
                    binding.cvGreen.visibility = View.VISIBLE
+                   binding.addPersonFab.show()
                    val fragment = AreasFragment()
 
                    val ft: FragmentTransaction =
@@ -87,18 +88,6 @@ class ClientHomeFragment : Fragment() {
 
            }
        }
-//       navController.addOnDestinationChangedListener { _, destination, _ ->
-//
-//           if (destination.id == R.id.homeFragment || destination.id == R.id.staticsFragment
-//               || destination.id == R.id.chatFragment || destination.id == R.id.profileFragment
-//           ) {
-//               binding.navView.visibility = View.VISIBLE
-//           } else {
-//               binding.navView.visibility = View.GONE
-//           }
-//
-//
-//       }
 
        return binding.root
     }

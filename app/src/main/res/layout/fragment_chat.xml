@@ -6,6 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.client.ui.ChatFragment">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/white"
+            android:fontFamily="@font/righteous"
+            android:text="AskMyStreet Chat"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            android:textColor="@color/main_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main"
         android:layout_width="0dp"
@@ -13,13 +42,13 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:elevation="5dp"
         android:orientation="horizontal"
         android:weightSum="3"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -27,25 +56,45 @@
         <ImageView
             android:id="@+id/iv_gallery"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:padding="5dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/baseline_burst_mode_24" />
 
-        <EditText
-            android:id="@+id/ev_send"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/image_prompt_text_til"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="Type a message"
+            android:layout_marginBottom="8dp"
             android:layout_weight="2"
-            android:hint="Type a text"
-            android:inputType="textShortMessage" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_rv">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ev_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
         <ImageView
             android:id="@+id/iv_send"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:padding="5dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/baseline_call_made_24" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/image_prompt_progress"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

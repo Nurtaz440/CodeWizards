@@ -25,6 +25,8 @@ class MessageAdapter : RecyclerView.Adapter<ViewHolder>() {
 inner class UserViewHolder(private val binding: ItemChatBinding) :
     ViewHolder(binding.root) {
     fun bind(message: Pair<String, Int>) {
+        binding.rightChatView.visibility = View.VISIBLE
+        binding.leftChatView.visibility = View.GONE
         binding.rightChatTextView.text = message.first
     }
 }
@@ -32,6 +34,8 @@ inner class UserViewHolder(private val binding: ItemChatBinding) :
     inner class GeminiViewHolder(private val binding: ItemChatBinding) :
         ViewHolder(binding.root) {
         fun bind(message: Pair<String, Int>) {
+            binding.rightChatView.visibility = View.GONE
+            binding.leftChatView.visibility = View.VISIBLE
             binding.leftChatTextView.text = message.first
         }
     }
