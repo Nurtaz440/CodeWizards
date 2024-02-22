@@ -1,36 +1,90 @@
 package com.example.farganaapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.farganaapp.databinding.ItemChatBinding
 import com.example.farganaapp.model.Chat
-const val SENT_BY_NAME = "me"
-const val SENT_BY_BOT = "bot"
-
-class MessageAdapter(private val messageList : ArrayList<Chat>) : RecyclerView.Adapter<MessageAdapter.VH>() {
 
 
+class MessageAdapter : RecyclerView.Adapter<ViewHolder>() {
+    private val messages = mutableListOf<Pair<String, Int>>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-
-        return VH(ItemChatBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    @SuppressLint("NotifyDataSetChanged")
+    fun setMessages(messages: List<Pair<String, Int>>) {
+        this.messages.apply {
+            clear()
+            addAll(messages)
+        }
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
-        val message = messageList[position]
+inner class UserViewHolder(private val binding: ItemChatBinding) :
+    ViewHolder(binding.root) {
+    fun bind(message: Pair<String, Int>) {
+        binding.rightChatTextView.text = message.first
+    }
+}
 
-        if (message.isFromUser){
-            holder.leftChatView.visibility = View.GONE
-            holder.rightChatView.visibility = View.VISIBLE
-            holder.rightTextView.text = message.prompt
-        }else{
-            holder.rightChatView.visibility = View.GONE
-            holder.leftChatView.visibility = View.VISIBLE
-            holder.leftTextView.text = message.prompt
+    inner class GeminiViewHolder(private val binding: ItemChatBinding) :
+        ViewHolder(binding.root) {
+        fun bind(message: Pair<String, Int>) {
+            binding.leftChatTextView.text = message.first
         }
-//        if (message.prompt.equals(SENT_BY_NAME)){
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return when (viewType) {
+            VIEW_TYPE_USER -> {
+                val binding =
+                    ItemChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                UserViewHolder(binding)
+            }
+
+            VIEW_TYPE_GEMINI -> {
+                val binding =
+                    ItemChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                GeminiViewHolder(binding)
+            }
+
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val message = messages[position]
+        when (holder.itemViewType) {
+            VIEW_TYPE_USER -> {
+                val userViewHolder = holder as UserViewHolder
+                userViewHolder.bind(message)
+            }
+
+            VIEW_TYPE_GEMINI -> {
+                val geminiViewHolder = holder as GeminiViewHolder
+                geminiViewHolder.bind(message)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return messages.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return messages[position].second
+    }
+
+    companion object {
+        const val VIEW_TYPE_USER = 1
+        const val VIEW_TYPE_GEMINI = 2
+    }
+
+//    override fun onBindViewHolder(holder: VH, position: Int) {
+//        val message = messageList[position]
+//
+//        if (message.isFromUser){
 //            holder.leftChatView.visibility = View.GONE
 //            holder.rightChatView.visibility = View.VISIBLE
 //            holder.rightTextView.text = message.prompt
@@ -40,15 +94,5 @@ class MessageAdapter(private val messageList : ArrayList<Chat>) : RecyclerView.A
 //            holder.leftTextView.text = message.prompt
 //        }
 
-    }
-
-    override fun getItemCount() = messageList.size
-
-    class VH(val binding: ItemChatBinding) : RecyclerView.ViewHolder(binding.root){
-        val leftChatView = binding.leftChatView
-        val leftTextView = binding.leftChatTextView
-        val rightChatView = binding.rightChatView
-        val rightTextView = binding.rightChatTextView
-    }
 
 }
