@@ -2,6 +2,8 @@ package com.example.farganaapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.datastore.DataStore
 import androidx.datastore.preferences.Preferences
 import androidx.datastore.preferences.createDataStore
@@ -10,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.example.farganaapp.databinding.ActivityMainBinding
 import com.example.farganaapp.util.SharedPreferencesManager
+import com.google.android.gms.ads.MobileAds
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
